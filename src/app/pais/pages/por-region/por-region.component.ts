@@ -24,17 +24,14 @@ export class PorRegionComponent {
   }
 
   activarRegion(region: string){
+
+      if( region === this.regionActiva ) { return; }
       this.regionActiva =region;
-  }
+      this.paises = [];
 
-  buscar(termino:string){
-
-    this.paisService.buscarRegion( termino ).subscribe( (paises) => {
-      console.log(paises);
-
+      this.paisService.buscarRegion( region ).subscribe( (paises) => {
         this.paises = paises;
       })
-
   }
 
 }

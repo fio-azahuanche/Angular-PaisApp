@@ -9,7 +9,7 @@
 
 <div class="row">
   <div class="col">
-    <button [class]="getClaseCSS(region)" *ngFor="let region of regiones" (click)="activarRegion(region)" (click)="buscar(region)">
+    <button [class]="getClaseCSS(region)" *ngFor="let region of regiones" (click)="activarRegion(region)">
       {{ region | uppercase }}
     </button>
   </div>
