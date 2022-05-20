@@ -7,7 +7,8 @@ import { Country } from '../interfaces/pais.interface';
   providedIn: 'root'
 })
 export class PaisService {
-  private apiURL: string = 'https://restcountries.com/v3.1'
+  private apiURL: string = 'https://restcountries.com/v3.1';
+  private regionURL: string = 'https://restcountries.com/v2';
   constructor( private http: HttpClient) { }
 
   buscarPais( termino: string ): Observable<Country[]>{
@@ -22,6 +23,11 @@ export class PaisService {
 
   getPaisPorCodigo( id: string ): Observable<Country[]>{
     const url = `${this.apiURL}/alpha/${id}`;
+    return this.http.get<Country[]>( url );
+  }
+
+  buscarRegion( region: string ): Observable<Country[]>{
+    const url = `${this.regionURL}/regionalbloc/${region}`;
     return this.http.get<Country[]>( url );
   }
 }
