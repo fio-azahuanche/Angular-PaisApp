@@ -7,7 +7,16 @@
     <app-pais-input (onEnter)="buscar($event)" (onDebounce)="sugerencias($event)" placeholder="Buscar país ..."></app-pais-input>
   </div>
 </div>
+<ul *ngIf="mostrarSugerencias" class="list-group">
+  <li *ngFor="let pais of paisesSugeridos" class="list-group-item list-group-item-action">
+    <a class="nav-link" [routerLink]="['/pais', pais.altSpellings[0]]">{{pais.name.common}}</a>
+  </li>
 
+  <li class="list-group-item list-group-item-action">
+    <a class="nav-link" (click)="buscarSugerido(termino)">Buscar {{termino}}</a>
+  </li>
+
+</ul>
 <hr>
 </div>
 
